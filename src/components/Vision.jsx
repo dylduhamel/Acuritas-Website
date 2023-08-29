@@ -4,9 +4,9 @@ import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 
 const Vision = () => {
-    const text = "leverage Acuritas's comprehensive AI development expertise to maximize your businesses potential";
+    const text = "Leverage Acuritas's comprehensive AI development expertise to maximize your businesses potential";
     const words = text.split(' ');
-  
+
     const wordVariants = {
       hidden: { opacity: 0 },
       visible: (i) => ({
@@ -16,33 +16,36 @@ const Vision = () => {
         }
       })
     };
-  
+
     const [isVisible, setIsVisible] = useState(false);
+    const [key, setKey] = useState(0); // Key to reset the animation
     const visionRef = useRef(null);
-  
+
     useEffect(() => {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !isVisible) {
             setIsVisible(true);
-            observer.disconnect(); // Once the element is visible, we can stop observing
+            setKey(prevKey => prevKey + 1); // Increment key to reset animation
+          } else if (!entry.isIntersecting && isVisible) {
+            setIsVisible(false);
           }
         });
       });
-  
+
       if (visionRef.current) {
         observer.observe(visionRef.current);
       }
-  
+
       return () => {
         if (visionRef.current) {
           observer.unobserve(visionRef.current);
         }
       };
-    }, []);
-  
+    }, [isVisible]);
+
     return (
-        <div ref={visionRef} className="py-32 flex justify-center items-center">
+        <div ref={visionRef} className="py-4 flex justify-center items-center" key={key}>
           <div className="w-7/10 flex flex-wrap justify-center items-center">
             {words.map((word, i) => (
               <motion.span 
@@ -60,6 +63,5 @@ const Vision = () => {
         </div>
     );    
 }    
-
 
 export default SectionWrapper(Vision, "vision");

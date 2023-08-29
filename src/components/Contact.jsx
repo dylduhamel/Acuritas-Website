@@ -14,6 +14,7 @@ const Contact = () => {
     name: '',
     email: '',
     message: '',
+    budget: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -39,7 +40,7 @@ const Contact = () => {
         to_name: 'Acuritas',
         from_email: form.email,
         to_email: 'team@acuritasconsulting.com',
-        message: form.message,
+        message: `${form.message} [We would like a budget range of ${form.budget}]`,
       },
       'rpK1cWylxbDtu_SY-'
     )
@@ -51,6 +52,7 @@ const Contact = () => {
         name: "",
         email: "",
         message: "",
+        budget: "",
       });
     }, (error) => {
       setLoading(false);
@@ -83,7 +85,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="What's your name?"
-              className="bg-[#e5e9f0] py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              className="bg-[#e5e9f0] py-4 px-6 placeholder:text-secondary text-secondary rounded-lg outlined-none border-none font-medium"
             />
           </label>
 
@@ -95,7 +97,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               placeholder="What's your email?"
-              className="bg-[#e5e9f0] py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              className="bg-[#e5e9f0] py-4 px-6 placeholder:text-secondary text-secondary rounded-lg outlined-none border-none font-medium"
             />
           </label>
 
@@ -106,9 +108,25 @@ const Contact = () => {
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What do you want to say?"
-              className="bg-[#e5e9f0] py-4 px-6 placeholder:text-secondary text-white rounded-lg outlined-none border-none font-medium"
+              placeholder="How can we help you?"
+              className="bg-[#e5e9f0] py-4 px-6 placeholder:text-secondary text-secondary rounded-lg outlined-none border-none font-medium"
             />
+          </label>
+
+          <label className="flex flex-col">
+            <span className="text-secondary font-medium mb-4">What is your budget for this project?</span>
+            <select
+                name="budget"
+                value={form.budget}
+                onChange={handleChange}
+                className="bg-[#e5e9f0] py-4 px-6 text-secondary rounded-lg outlined-none border-none font-medium"
+            >
+                <option value="Less than $5,000">Less than $5,000</option>
+                <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                <option value="$10,000 - $20,000">$10,000 - $20,000</option>
+                <option value="$20,000 - $40,000">$20,000 - $40,000</option>
+                <option value="$40,000+">$40,000+</option>
+            </select>
           </label>
 
           <button

@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 
-import { About, Contact, Team, Hero, Navbar, StarsCanvas, Vision } from "./components";
+import { About, Contact, Team, Solutions, Hero, Navbar, StarsCanvas, Vision } from "./components";
 
 const App = () => {
   return (
@@ -15,6 +15,7 @@ const App = () => {
         <div className="w-full bg-[#090A11] bg-cover">
           <Vision />
         </div>
+        <Solutions />
         <Team />
         <div className='bg-[#010b15] relative z-0'>
           <Contact />

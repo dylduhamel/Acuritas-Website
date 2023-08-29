@@ -4,6 +4,10 @@
     title: "About",
   },
   {
+    id: "solutions",
+    title: "Solutions",
+  },
+  {
     id: "team",
     title: "Team",
   },
@@ -13,9 +17,9 @@
   },
 ];
 
-const services = [
+const solutions = [
   {
-    title: "GPT-3 | GPT-4 Development",
+    title: "GPT-3 | GPT-4 Implementation",
     info: "Language synthesis-Knowledge response-Chatbot development-Model tuning",
   },
   {
@@ -46,4 +50,4 @@ const projects = [
   
 ];
 
-export { services, testimonials, projects };
+export { solutions, testimonials, projects };

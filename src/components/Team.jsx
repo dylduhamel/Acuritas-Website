@@ -8,7 +8,6 @@ import { testimonials } from "../constants";
 
 const TeamCard = ({
   index,
-  testimonial,
   name,
   designation,
   company,
@@ -22,15 +21,15 @@ const TeamCard = ({
       <img
           src={image}
           alt={`feedback_by-${name}`}
-          className='w-40 h-40 rounded-full object-cover'
+          className='w-60 h-60 rounded-full object-cover'
         />
       <div className='mt-7 flex justify-between items-center gap-1'>
         <div className='flex-1 flex flex-col'>
           <p className='text-white font-medium text-[16px]'>
-            <span className='blue-text-gradient'>@</span> {name}
+            {name}
           </p>
-          <p className='mt-1 text-secondary text-[12px]'>
-            {designation} of {company}
+          <p className='mt-1 text-secondary text-[18px]'>
+            {designation}
           </p>
         </div>
       </div>
@@ -45,8 +44,8 @@ const Team = () => {
         className={`bg-[#e5e9f0] rounded-2xl ${styles.padding} min-h-[300px]`}
       >
         <motion.div variants={textVariant()}>
-          <p className={styles.sectionSubText}>Who we are</p>
-          <h2 className={styles.sectionHeadText}>Meet the team</h2>
+          <p className={styles.sectionSubText}>Who We Are</p>
+          <h2 className={styles.sectionHeadText}>Meet The Team</h2>
         </motion.div>
       </div>
       <div className={`-mt-20 pb-14 ${styles.paddingX} flex flex-wrap gap-32 justify-center items-center`}>

@@ -5,6 +5,7 @@ import About from './About';
 import Team from './Team';
 import Contact from './Contact';
 import Vision from './Vision';
+import Solutions from './Solutions';
 
 export {
   Hero,
@@ -16,5 +17,6 @@ export {
   BallCanvas, 
   EarthCanvas, 
   StarsCanvas,
-  Vision
+  Vision,
+  Solutions
 }

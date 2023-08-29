@@ -1,19 +1,36 @@
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import { Suspense, useEffect } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
+import { OrbitControls, Preload, useGLTF, useTexture } from "@react-three/drei";
+import * as THREE from 'three';
 
 import CanvasLoader from '../Loader';
 
 const Water = () => {
   const water = useGLTF('./fluid/fluid.gltf');
+  const envMap = useTexture('./3dHDRI.jpg');
+
+
+  const { gl } = useThree();
+
+  useEffect(() => {
+    gl.capabilities.precision = 'highp';
+  }, [gl]);
+
+
+  // Ensure all materials in the model are transparent
+  water.scene.traverse((child) => {
+    if (child.isMesh && child.material) {
+      child.material.envMap = envMap;
+    }
+  });
 
   return (
     <mesh>
       <spotLight
-        position={[0, 15, 0]}
+        position={[10, 15, 0]}
         angle={1}
         penumbra={1}
-        intensity={1000}
+        intensity={5000}
         castShadow
         shadow-mapSize={1024}
       />
@@ -22,6 +39,7 @@ const Water = () => {
         scale={0.1}
         position-y={-2.3}
         rotation-y={0}
+        transparent={true}
       />
     </mesh>
   )
