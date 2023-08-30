@@ -14,7 +14,7 @@ const Contact = () => {
     name: '',
     email: '',
     message: '',
-    budget: "",
+    budget: "$10,000 - $20,000",
   });
   const [loading, setLoading] = useState(false);
 

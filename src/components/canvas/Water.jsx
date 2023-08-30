@@ -7,13 +7,14 @@ import CanvasLoader from '../Loader';
 import * as THREE from 'three';
 
 const Water = () => {
-  const water = useGLTF('./fluid/fluid.gltf');
+  const water = useGLTF('./fluid/modelDraco.glb');
   const { gl, scene } = useThree();
   const [envMap, setEnvMap] = useState(null);
+  const hdrPath = '/3dBKG.hdr';
 
   useEffect(() => {
     // Load the HDR file
-    new RGBELoader().load('public/3dBKG.hdr', (texture) => {
+    new RGBELoader().load(hdrPath, (texture) => {
       const pmremGenerator = new PMREMGenerator(gl);
       pmremGenerator.compileEquirectangularShader();
       const envMap = pmremGenerator.fromEquirectangular(texture).texture;

@@ -51,7 +51,7 @@ const gradientShader = {
 
 
 const Earth = ({ isMobile }) => {
-  const earth = useGLTF("./earth/earth.gltf");
+  const earth = useGLTF("./earth/modelDraco.glb");
   
   earth.scene.traverse((child) => {
     if (child.isMesh && child.name === "planet") {
