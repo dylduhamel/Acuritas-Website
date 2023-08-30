@@ -36,12 +36,12 @@ const solutions = [
 const testimonials = [
   {
     name: "Dylan Duhamel",
-    designation: "POSITION",
-    image: "https://randomuser.me/api/portraits/men/4.jpg",
+    designation: "Lead Technology Engineer",
+    image: "src/assets/dylan.png",
   },
   {
     name: "Justin Taylor",
-    designation: "POSITION",
+    designation: "Lead AI Operations Specialist",
     image: "https://randomuser.me/api/portraits/men/5.jpg",
   },
 ];

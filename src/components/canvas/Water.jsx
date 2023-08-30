@@ -1,27 +1,35 @@
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF, useTexture } from "@react-three/drei";
-import * as THREE from 'three';
-
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
+import { PMREMGenerator } from 'three';
 import CanvasLoader from '../Loader';
+import * as THREE from 'three';
 
 const Water = () => {
   const water = useGLTF('./fluid/fluid.gltf');
-  const envMap = useTexture('./3dHDRI.jpg');
-
-
-  const { gl } = useThree();
+  const { gl, scene } = useThree();
+  const [envMap, setEnvMap] = useState(null);
 
   useEffect(() => {
-    gl.capabilities.precision = 'highp';
-  }, [gl]);
+    // Load the HDR file
+    new RGBELoader().load('public/3dBKG.hdr', (texture) => {
+      const pmremGenerator = new PMREMGenerator(gl);
+      pmremGenerator.compileEquirectangularShader();
+      const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+      setEnvMap(envMap);
+      scene.environment = envMap; // Optional: Set it as the scene's environment
+      texture.dispose();
+      pmremGenerator.dispose();
+    });
+  }, [gl, scene]);
 
-
-  // Ensure all materials in the model are transparent
-  water.scene.traverse((child) => {
-    if (child.isMesh && child.material) {
-      child.material.envMap = envMap;
-    }
+  // Create a reflective material
+  const reflectiveMaterial = new THREE.MeshStandardMaterial({
+    color: 0xaaaaaa,
+    metalness: 1, // Makes it reflective
+    roughness: 0, // Makes it glossy
+    envMap: envMap, // Assign the environment map
   });
 
   return (
@@ -36,10 +44,10 @@ const Water = () => {
       />
       <primitive
         object={water.scene}
-        scale={0.1}
+        material={reflectiveMaterial} // Assign the reflective material
+        scale={0.09}
         position-y={-2.3}
         rotation-y={0}
-        transparent={true}
       />
     </mesh>
   )

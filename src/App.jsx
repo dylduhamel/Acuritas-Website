@@ -12,7 +12,7 @@ const App = () => {
           <Hero />
         </div>
         <About />
-        <div className="w-full bg-[#090A11] bg-cover">
+        <div className="w-full bg-[#010B15] bg-cover">
           <Vision />
         </div>
         <Solutions />
