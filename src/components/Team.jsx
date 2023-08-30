@@ -10,7 +10,6 @@ const TeamCard = ({
   index,
   name,
   designation,
-  company,
   image,
 }) => (
   <motion.div
@@ -20,7 +19,7 @@ const TeamCard = ({
     <div className='mt-1'>
       <img
           src={image}
-          alt={`feedback_by-${name}`}
+          alt={`Picture of-${name}`}
           className='w-60 h-60 rounded-full object-cover'
         />
       <div className='mt-7 flex justify-between items-center gap-1'>

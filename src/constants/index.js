@@ -42,7 +42,7 @@ const testimonials = [
   {
     name: "Justin Taylor",
     designation: "Lead AI Operations Specialist",
-    image: "https://randomuser.me/api/portraits/men/5.jpg",
+    image: "src/assets/jt.png",
   },
 ];
 
