@@ -18,4 +18,4 @@ Welcome to the official repository for the Acuritas AI Consulting website. Acuri
 
 Acuritas AI Consulting is at the forefront of AI integration in business solutions. With a team of dedicated experts, we aim to leverage AI's potential to drive business growth and innovation.
 
-For more information, visit our [official website](#) or get in touch with our team.
+For more information, visit our [official website](www.acuritasconsulting.com) or get in touch with our team.
