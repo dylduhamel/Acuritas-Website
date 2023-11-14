@@ -1,6 +1,6 @@
 # Acuritas AI Consulting
 
-Welcome to the official repository for the Acuritas AI Consulting website. Acuritas AI Consulting is a premier platform that offers comprehensive AI-driven solutions for businesses. Our website showcases our expertise, services, and the cutting-edge technologies we employ.
+The official repository for the Acuritas AI Consulting website. Acuritas AI Consulting is a premier platform that offers comprehensive AI-driven solutions for businesses. Our website showcases our expertise, services, and the cutting-edge technologies we employ.
 
 ## Features
 
